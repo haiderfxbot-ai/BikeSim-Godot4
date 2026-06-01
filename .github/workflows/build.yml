@@ -59,9 +59,13 @@ jobs:
         yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
     - name: Build APK (Debug)
+      shell: bash
       run: |
+        set +e
         mkdir -p Builds
-        $GODOT_BIN --path . --headless --export-debug Android ./Builds/RealisticBikeSimulator.apk
+        $GODOT_BIN --path . --headless --verbose --export-debug Android ./Builds/RealisticBikeSimulator.apk
+        echo "GODOT_EXIT_CODE=$?"
+        set -e
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
