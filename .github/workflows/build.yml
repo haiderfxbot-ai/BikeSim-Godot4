@@ -41,8 +41,7 @@ jobs:
         wget -q https://github.com/godotengine/godot/releases/download/4.6.3-stable/Godot_v4.6.3-stable_export_templates.tpz
         mkdir -p ~/.local/share/godot/export_templates/4.6.3.stable
         unzip -q Godot_v4.6.3-stable_export_templates.tpz -d /tmp/templates
-        ls /tmp/templates/
-        cp -r /tmp/templates/* ~/.local/share/godot/export_templates/4.6.3.stable/
+        cp -r /tmp/templates/templates/* ~/.local/share/godot/export_templates/4.6.3.stable/
         ls ~/.local/share/godot/export_templates/4.6.3.stable/
         echo "Templates installed"
 
@@ -54,18 +53,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gradle-
 
-    - name: Accept Android Licenses
-      run: |
-        yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-
     - name: Build APK (Debug)
-      shell: bash
       run: |
-        set +e
         mkdir -p Builds
-        $GODOT_BIN --path . --headless --verbose --export-debug Android ./Builds/RealisticBikeSimulator.apk
-        echo "GODOT_EXIT_CODE=$?"
-        set -e
+        $GODOT_BIN --path . --headless --export-debug Android ./Builds/RealisticBikeSimulator.apk
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
