@@ -10,9 +10,6 @@ window/size/mode=2
 window/size/initial_screen_type=0
 window/handheld/orientation=0
 
-[rendering]
-renderer/rendering_method=mobile
-
 [autoload]
 SoundManager="*res://scripts/sound_manager.gd"
 GameRulesManager="*res://scripts/game_rules_manager.gd"
