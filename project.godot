@@ -11,41 +11,8 @@ window/size/initial_screen_type=0
 window/handheld/orientation=0
 
 [rendering]
-renderer/rendering_method=gl_compatibility
-renderer/rendering_method.mobile=gl_compatibility
-
-[input_devices]
-pointing/ios/touch_delay=0.150000
-
-[input]
-ignite_key={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey, "resource": { "script": null, "device": -1, "alt": false, "shift": false, "control": false, "meta": false, "command": false, "pressed": false, "keycode": 73, "physical_keycode": 0, "key_label": 0, "unicode": 105, "location": 0, "echo": false }, "resource_local_to_scene": false) ]
-}
-kick_start={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey, "resource": { "script": null, "device": -1, "alt": false, "shift": false, "control": false, "meta": false, "command": false, "pressed": false, "keycode": 75, "physical_keycode": 0, "key_label": 0, "unicode": 107, "location": 0, "echo": false }, "resource_local_to_scene": false) ]
-}
-clutch={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey, "resource": { "script": null, "device": -1, "alt": false, "shift": false, "control": false, "meta": false, "command": false, "pressed": false, "keycode": 67, "physical_keycode": 0, "key_label": 0, "unicode": 99, "location": 0, "echo": false }, "resource_local_to_scene": false) ]
-}
-gear_up={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey, "resource": { "script": null, "device": -1, "alt": false, "shift": false, "control": false, "meta": false, "command": false, "pressed": false, "keycode": 85, "physical_keycode": 0, "key_label": 0, "unicode": 117, "location": 0, "echo": false }, "resource_local_to_scene": false) ]
-}
-gear_down={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey, "resource": { "script": null, "device": -1, "alt": false, "shift": false, "control": false, "meta": false, "command": false, "pressed": false, "keycode": 68, "physical_keycode": 0, "key_label": 0, "unicode": 100, "location": 0, "echo": false }, "resource_local_to_scene": false) ]
-}
-throttle={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey, "resource": { "script": null, "device": -1, "alt": false, "shift": false, "control": false, "meta": false, "command": false, "pressed": false, "keycode": 87, "physical_keycode": 0, "key_label": 0, "unicode": 119, "location": 0, "echo": false }, "resource_local_to_scene": false) ]
-}
+renderer/rendering_method=mobile
 
 [autoload]
 SoundManager="*res://scripts/sound_manager.gd"
 GameRulesManager="*res://scripts/game_rules_manager.gd"
-
-[debug]
-gdscript/warnings/return_value_discarded=false
