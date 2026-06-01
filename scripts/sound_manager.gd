@@ -1,5 +1,4 @@
 extends Node
-class_name SoundManager
 
 var _engine_audio: AudioStreamPlayer2D = null
 var _audio_bus_name: String = "Master"

@@ -1,5 +1,4 @@
 extends Node
-class_name GameRulesManager
 
 var _bike: BikePhysics = null
 var _engine: BikeEngine = null
