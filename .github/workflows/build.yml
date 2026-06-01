@@ -1,0 +1,65 @@
+name: Build Godot 4 Android APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Java JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Install Android SDK components
+      run: |
+        yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+          "platforms;android-33" \
+          "build-tools;33.0.2" \
+          "ndk;25.2.9519653"
+
+    - name: Download Godot 4 Headless
+      run: |
+        wget -q https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux_headless.x86_64.zip
+        unzip -q Godot_v4.3-stable_linux_headless.x86_64.zip
+        chmod +x Godot_v4.3-stable_linux_headless.x86_64
+        echo "GODOT_BIN=$PWD/Godot_v4.3-stable_linux_headless.x86_64" >> $GITHUB_ENV
+
+    - name: Download Godot Android Export Templates
+      run: |
+        wget -q https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+        mkdir -p ~/.local/share/godot/export_templates/4.3.stable
+        unzip -q Godot_v4.3-stable_export_templates.tpz -d /tmp/templates
+        cp /tmp/templates/templates/* ~/.local/share/godot/export_templates/4.3.stable/
+        echo "Templates installed"
+
+    - name: Setup Gradle Cache
+      uses: actions/cache@v4
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+
+    - name: Build APK (Release)
+      run: |
+        mkdir -p Builds
+        $GODOT_BIN --headless --export-release Android ./Builds/RealisticBikeSimulator.apk --path .
+
+    - name: Upload APK Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: RealisticBikeSimulator-APK
+        path: Builds/RealisticBikeSimulator.apk
+        retention-days: 30

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://main_game"]
+
+[ext_resource type="PackedScene" path="res://scenes/level_base.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/mobile_ui.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/bike.tscn" id="3"]
+
+[node name="MainGame" type="Node2D"]
+
+[node name="LevelBase" parent="." instance=ExtResource("1")]
+
+[node name="Bike" parent="LevelBase" instance=ExtResource("3")]
+
+[node name="MobileUI" parent="." instance=ExtResource("2")]

@@ -1,0 +1,63 @@
+{
+  "project_name": "Realistic Bike Simulator",
+  "godot_version": "4.3",
+  "target_platform": "Android",
+  "steps": {
+    "step_1_foundation": {
+      "status": "COMPLETED",
+      "files": [
+        "project.godot",
+        "export_presets.cfg",
+        ".github/workflows/build.yml",
+        "README.md",
+        "project_build_manifest.json"
+      ]
+    },
+    "step_2_core_physics": {
+      "status": "COMPLETED",
+      "files": [
+        "scenes/bike.tscn",
+        "scripts/bike_physics.gd",
+        "scenes/level_base.tscn",
+        "scripts/level_base.gd"
+      ]
+    },
+    "step_3_engine_logic": {
+      "status": "COMPLETED",
+      "files": [
+        "scripts/bike_engine.gd",
+        "scripts/bike_physics.gd (updated)"
+      ]
+    },
+    "step_4_mobile_ui": {
+      "status": "COMPLETED",
+      "files": [
+        "scenes/mobile_ui.tscn",
+        "scripts/mobile_ui.gd"
+      ]
+    },
+    "step_5_crash_penalties": {
+      "status": "COMPLETED",
+      "files": [
+        "scripts/game_rules_manager.gd",
+        "scripts/bike_physics.gd (updated)",
+        "scenes/mobile_ui.tscn (updated)"
+      ]
+    },
+    "step_6_sound_polish": {
+      "status": "COMPLETED",
+      "files": [
+        "scripts/sound_manager.gd",
+        "scripts/mobile_ui.gd (updated)",
+        "scenes/mobile_ui.tscn (updated)",
+        "scenes/main_game.tscn",
+        "project.godot (updated)"
+      ]
+    }
+  },
+  "notes": {
+    "autoloads": ["SoundManager (res://scripts/sound_manager.gd)", "GameRulesManager (res://scripts/game_rules_manager.gd)"],
+    "main_scene": "res://scenes/main_game.tscn",
+    "ci_workflow": ".github/workflows/build.yml — exports APK on push to master using Godot 4.3 headless"
+  }
+}
